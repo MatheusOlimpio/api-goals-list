@@ -1,0 +1,12 @@
+{
+  "devDependencies": {
+    "eslint": "^7.11.0"
+  },
+  "name": "api-goals-list",
+  "version": "1.0.0",
+  "description": "Application Crud Api with the objective of creating a system of goals",
+  "main": "index.js",
+  "repository": "https://github.com/MatheusOlimpio/api-goals-list.git",
+  "author": "Matheus Olimpio de Oliveira <mah.oliver_crz@hotmail.com>",
+  "license": "MIT"
+}
