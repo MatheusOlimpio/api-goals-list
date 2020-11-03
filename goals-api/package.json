@@ -35,7 +35,7 @@
     "dotenv": "^8.2.0",
     "express": "^4.17.1",
     "express-promise-router": "^4.0.1",
-    "knex": "^0.21.9",
+    "knex": "^0.21.11",
     "mysql": "^2.18.1",
     "mysql2": "^2.2.5"
   }
