@@ -8,14 +8,18 @@
  const goalController = require('../controllers/goal.controller');
 
 
- // => Definindo Rotas do CRUD - 'Metas'
+// => Definindo Rotas do CRUD - 'Metas'
 
-//  // => Rota para visualizar as 'Goals' do usuario: (GET): localhost:3000/api/goals
+// => Rota para visualizar as 'Goals' do usuario: (GET): localhost:3000/api/goals
 router.get('/goals', goalController.listAllGoals);
 
- // => Rota para cadastrar uma 'Goal': (POST): localhost:3000/api/goals
+// => Rota para visualizar uma 'Goal' do usuario: (GET): localhost:3000/api/goals
+router.get('/goals/:id', goalController.listGoalById);
+
+// => Rota para cadastrar uma 'Goal': (POST): localhost:3000/api/goals
 router.post('/goals', goalController.createGoal);
-//  // => Rota para editar uma 'Goal': (PUT): localhost:3000/api/goals
+
+// => Rota para editar uma 'Goal': (PUT): localhost:3000/api/goals
 
 //  // => Rota para excluir uma 'Goal': (DELETE): localhost:3000/api/goals
 

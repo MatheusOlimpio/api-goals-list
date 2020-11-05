@@ -28,5 +28,18 @@ exports.listAllGoals = async (req, res) => {
 
   await db('goals').where({id_user}).then(goals => {
     res.status(200).send(goals);     // respond back to request
+  }).catch(error => {
+    console.log(error);
   });
+}
+
+exports.listGoalById =  async(req, res) => {
+  const id_goal  = parseInt(req.params.id);
+  const id_user = req.body.id_user;
+
+  await db('goals').where({id_goal: id_goal, id_user: id_user}).then(goal => {
+    res.status(200).send(goal); 
+  }).catch(error => {
+    console.log(error);
+  })
 }
