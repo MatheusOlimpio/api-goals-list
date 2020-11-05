@@ -33,7 +33,8 @@ exports.listAllGoals = async (req, res) => {
   });
 }
 
-exports.listGoalById =  async(req, res) => {
+// =>  Metodo responsavel por listar uma 'Goal'
+exports.listGoalById =  async (req, res) => {
   const id_goal  = parseInt(req.params.id);
   const id_user = req.body.id_user;
 
@@ -42,4 +43,20 @@ exports.listGoalById =  async(req, res) => {
   }).catch(error => {
     console.log(error);
   })
+}
+
+// =>  Metodo responsavel por atualizar uma 'Goal'
+exports.updateGoal = async (req, res) => {
+  const goalId = req.params.id;
+  const { goal, init_date, final_date } = req.body;
+
+  await db('goals').where({id_goal: goalId}).update({
+    goal,
+    init_date,
+    final_date
+  }).then(result => {
+    res.status(200).send({ message: 'Goal Updated Successfully !' })
+  }).catch(error => {
+    res.status(500).send({ message: 'Error - Goal not updated' })
+  });
 }

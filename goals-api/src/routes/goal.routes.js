@@ -20,8 +20,9 @@ router.get('/goals/:id', goalController.listGoalById);
 router.post('/goals', goalController.createGoal);
 
 // => Rota para editar uma 'Goal': (PUT): localhost:3000/api/goals
+router.put('/goals/:id', goalController.updateGoal);
 
-//  // => Rota para excluir uma 'Goal': (DELETE): localhost:3000/api/goals
+// => Rota para excluir uma 'Goal': (DELETE): localhost:3000/api/goals
 
 
 
