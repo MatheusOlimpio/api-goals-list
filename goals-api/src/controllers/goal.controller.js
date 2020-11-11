@@ -60,3 +60,16 @@ exports.updateGoal = async (req, res) => {
     res.status(500).send({ message: 'Error - Goal not updated' })
   });
 }
+
+// => Metodo responsavel por delete uma 'Goal'
+exports.deleteGoal = async (req, res) => {
+  const goalId = req.params.id;
+
+  await db('goals').where({id_goal: goalId}).delete({
+
+  }).then(result => {
+    res.status(200).send({ message: 'Goal deleted with Successfully !' })
+  }).catch(error => {
+    res.status(500).send({ message: 'Error - Goal not deleted' })
+  })
+}

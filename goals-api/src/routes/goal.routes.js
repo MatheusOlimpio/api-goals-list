@@ -23,7 +23,7 @@ router.post('/goals', goalController.createGoal);
 router.put('/goals/:id', goalController.updateGoal);
 
 // => Rota para excluir uma 'Goal': (DELETE): localhost:3000/api/goals
-
+router.delete('/goals/:id', goalController.deleteGoal);
 
 
 module.exports = router;
