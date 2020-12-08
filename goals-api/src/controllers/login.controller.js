@@ -3,8 +3,8 @@
  * descricao: arquivo responsavel pela logica de autenticacao/login usuario - 'Login'
  * data: 21/11/2020
  */
-
 const db = require('../config/database');
+const jwt = require('jsonwebtoken');
 
 exports.autenticacaoUsuario =  async(req, res) => {
   const { username, password } = req.body;
@@ -15,5 +15,7 @@ exports.autenticacaoUsuario =  async(req, res) => {
     return res.status(401).send( { message: 'User is not Authorized' })
   }
 
-  return res.status(200).send({ message: 'User authorized', user});
+  const token = jwt.sign({user: user}, process.env.SECRET, {expiresIn: '500'});
+
+  return res.status(200).send({ message: 'User authorized', user, token});
 };
