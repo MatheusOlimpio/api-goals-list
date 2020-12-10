@@ -9,13 +9,13 @@ const jwt = require('jsonwebtoken');
 exports.autenticacaoUsuario =  async(req, res) => {
   const { username, password } = req.body;
 
-  const user = await db('users').column('id', 'name', 'username', 'password').where({ username: username, password: password });
+  const user = await db('users').column('id', 'name', 'username', 'email').where({ username: username, password: password });
 
   if(!user || user.length === 0) {
     return res.status(401).send( { message: 'User is not Authorized' })
   }
 
-  const token = jwt.sign({user: user}, process.env.SECRET, {expiresIn: '500'});
+  const token = jwt.sign({user: user}, process.env.SECRET, {expiresIn: '1h'});
 
   return res.status(200).send({ message: 'User authorized', user, token});
 };

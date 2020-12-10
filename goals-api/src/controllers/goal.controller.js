@@ -5,6 +5,7 @@
  */
 
 const db = require("../config/database");
+const jwt = require('jsonwebtoken');
 
 // =>  Metodo responsavel por criar uma nova 'Goal'
 exports.createGoal = async (req, res) => {
@@ -37,12 +38,17 @@ exports.listAllGoals = async (req, res) => {
 exports.listGoalById =  async (req, res) => {
   const id_goal  = parseInt(req.params.id);
   const id_user = req.body.id_user;
-
-  await db('goals').where({id_goal: id_goal, id_user: id_user}).then(goal => {
-    res.status(200).send(goal); 
-  }).catch(error => {
-    console.log(error);
-  })
+  jwt.verify(req.token, '', async (err, data) => {
+    if(err) {
+      return res.status(403);
+    }
+    await db('goals').where({id_goal: id_goal, id_user: id_user}).then(goal => {
+      res.status(200).send(goal); 
+    }).catch(error => {
+      console.log(error);
+    })
+    return true;
+  });
 }
 
 // =>  Metodo responsavel por atualizar uma 'Goal'
